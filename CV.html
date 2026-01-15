@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CV – Niyigena Fabrice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    :root {
+      --bg-page: #e5e5e5;
+      --bg-main: #ffffff;
+      --bg-sidebar: #f5f0ea;
+      --header-dark: #3b3b3f;
+      --text-main: #000000;
+      --text-muted: #555555;
+      --border-soft: #d0d0d0;
+      --ref-bg: #f7f7f7;
+    }
+
+    body {
+      margin: 0;
+      padding: 30px 10px;
+      background: var(--bg-page);
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-main);
+    }
+
+    .cv-shell {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--bg-main);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.18);
+    }
+
+    /* TOP BANNER */
+    .cv-header {
+      background: var(--header-dark);
+      color: var(--bg-main);
+      padding: 22px 60px 18px;
+      position: relative;
+    }
+
+    .cv-header-inner {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .cv-header-photo-wrapper {
+      flex-shrink: 0;
+    }
+
+    .cv-header-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+
+    .cv-header-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .cv-name {
+      font-size: 30px;
+      font-weight: 600;
+      margin: 0;
+      letter-spacing: 0.05em;
+    }
+
+    .cv-role {
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cv-subtagline {
+      font-size: 12px;
+      font-weight: 300;
+      opacity: 0.85;
+    }
+
+    .cv-header-bottom {
+      position: relative;
+      height: 40px;
+      overflow: hidden;
+    }
+
+    .cv-header-bottom::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 50%;
+      top: -40px;
+      border-top: 40px solid var(--header-dark);
+      border-right: 200px solid transparent;
+    }
+
+    .cv-header-bottom::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      left: 40%;
+      top: -40px;
+      border-top: 40px solid var(--bg-main);
+      border-left: 200px solid transparent;
+    }
+
+    /* BODY GRID */
+    .cv-body {
+      display: grid;
+      grid-template-columns: 310px minmax(0, 1fr);
+      min-height: 700px;
+    }
+
+    /* SIDEBAR */
+    .cv-sidebar {
+      background: var(--bg-sidebar);
+      padding: 32px 30px 30px;
+      border-right: 1px solid var(--border-soft);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .sidebar-section-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+
+    .sidebar-section {
+      margin-bottom: 24px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .contact-icon {
+      width: 18px;
+      margin-right: 8px;
+      font-size: 13px;
+    }
+
+    .contact-text a,
+    .contact-text {
+      text-decoration: none;
+      color: var(--text-main);
+      word-break: break-all;
+    }
+
+    .edu-item-title {
+      font-weight: 600;
+    }
+
+    .edu-item-sub {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .skill-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .skill-list li {
+      margin-bottom: 4px;
+    }
+
+    .skill-label-strong {
+      font-weight: 600;
+    }
+
+    .languages-list,
+    .interests-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .languages-list li,
+    .interests-list li {
+      margin-bottom: 4px;
+    }
+
+    .lang-level {
+      color: var(--text-muted);
+      font-size: 11px;
+      font-style: italic;
+    }
+
+    /* MAIN CONTENT */
+    .cv-main {
+      padding: 32px 50px 36px;
+      font-size: 13px;
+    }
+
+    .main-section-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+
+    .main-section-underline {
+      height: 2px;
+      background: var(--text-main);
+      width: 60px;
+      margin-bottom: 14px;
+    }
+
+    .main-section {
+      margin-bottom: 26px;
+    }
+
+    .summary-text {
+      line-height: 1.7;
+      color: var(--text-main);
+    }
+
+    /* EXPERIENCE */
+    .exp-block {
+      margin-bottom: 16px;
+    }
+
+    .exp-role-title {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .exp-dates {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .exp-summary {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .exp-bullets {
+      margin: 4px 0 10px 18px;
+      padding-left: 0;
+    }
+
+    .exp-bullets li {
+      margin-bottom: 3px;
+      line-height: 1.6;
+    }
+
+    /* REFERENCES */
+    .refs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 18px;
+    }
+
+    .ref-card {
+      background: var(--ref-bg);
+      border-radius: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--border-soft);
+    }
+
+    .ref-name {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .ref-role {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .ref-phone-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+    }
+
+    .ref-phone-value {
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 10px;
+      }
+      .cv-body {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .cv-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border-soft);
+      }
+      .cv-header {
+        padding: 18px 16px 14px;
+      }
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: #ffffff;
+      }
+      .cv-shell {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cv-shell">
+    <!-- HEADER -->
+    <header class="cv-header">
+      <div class="cv-header-inner">
+        <div class="cv-header-photo-wrapper">
+          <img
+            src="https://res.cloudinary.com/dz4nl90xs/image/upload/v1764609579/Profile_image_l6kflo.jpg"
+            alt="Profile photo of Niyigena Fabrice"
+            class="cv-header-photo"
+          />
+        </div>
+        <div class="cv-header-text">
+          <h1 class="cv-name">Niyigena Fabrice</h1>
+          <div class="cv-role">Project Manager · Digital Product & AI-Informed Solutions</div>
+          <div class="cv-subtagline">
+            Building modern African platforms at the intersection of technology, AI, and impact.
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="cv-header-bottom"></div>
+
+    <!-- BODY -->
+    <div class="cv-body">
+      <!-- SIDEBAR -->
+      <aside class="cv-sidebar">
+        <!-- Contact -->
+        <section class="sidebar-section">
+          <h3 class="sidebar-section-title">Contact Details</h3>
+          <div class="contact-row">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-text">
+              <a href="mailto:niyigenafabrice@yahoo.com">niyigenafabrice@yahoo.com</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">📞</div>
+            <div class="contact-text">
+              <a href="tel:+250780849228">+250 780 849 228</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">📍</div>
+            <div class="contact-text">
+              42, KG 674 St, Kigali, Rwanda
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">🔗</div>
+            <div class="contact-text">
+              <a href="https://www.linkedin.com/in/niyigena-frabrice-09a346181/" target="_blank" rel="noreferrer">
+                linkedin.com/in/niyigena-frabrice-09a346181
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education -->
+        <section class="sidebar-section">
+          <h3 class="sidebar-section-title">Education</h3>
+          <div class="edu-item">
+            <div class="edu-item-title">
+              Bachelor of Science in Medical Imaging Sciences
+            </div>
+            <div class="edu-item-sub">
+              University of Rwanda – College of Medicine &amp; Health Sciences
+            </div>
+          </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="sidebar-section">
+          <h3 class="sidebar-section-title">Certifications</h3>
+          <ul class="skill-list">
+            <li>IBM Agile Project Management – IBM / Coursera</li>
+            <li>Google Project Management – Google</li>
+            <li>Product Management – Product School</li>
+            <li>AI Product Management – Duke University</li>
+            <li>Generative AI for Product Managers – DeepLearning.AI</li>
+          </ul>
+        </section>
+
+        <!-- Skills -->
+        <section class="sidebar-section">
+          <h3 class="sidebar-section-title">Skills</h3>
+          <ul class="skill-list">
+            <li><span class="skill-label-strong">Project Management</span> – Agile, sprints, roadmaps</li>
+            <li><span class="skill-label-strong">Product Strategy</span> – vision, scoping, prioritization</li>
+            <li><span class="skill-label-strong">AI Awareness</span> – NLP, chatbots, voice UX</li>
+            <li><span class="skill-label-strong">User Experience</span> – user journeys, flows, feedback loops</li>
+            <li><span class="skill-label-strong">Collaboration</span> – cross-functional team leadership</li>
+            <li><span class="skill-label-strong">Tools</span> – Jira, Trello, Notion, Figma, Bolt, Canva</li>
+          </ul>
+        </section>
+
+        <!-- Languages -->
+        <section class="sidebar-section">
+          <h3 class="sidebar-section-title">Languages</h3>
+          <ul class="languages-list">
+            <li>English <span class="lang-level">– Fluent</span></li>
+            <li>Kinyarwanda <span class="lang-level">– Native</span></li>
+            <li>Swahili <span class="lang-level">– Basic working</span></li>
+          </ul>
+        </section>
+
+        <!-- Interests -->
+        <section class="sidebar-section">
+          <h3 class="sidebar-section-title">Interests</h3>
+          <ul class="interests-list">
+            <li>Building African digital products</li>
+            <li>AI & the future of public services</li>
+            <li>Storytelling & youth empowerment</li>
+            <li>Urban development & mobility</li>
+          </ul>
+        </section>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="cv-main">
+        <!-- Summary -->
+        <section class="main-section">
+          <h2 class="main-section-title">Summary</h2>
+          <div class="main-section-underline"></div>
+          <p class="summary-text">
+            Visionary and execution-focused <strong>Project Manager</strong> with experience
+            designing and delivering digital platforms, mobile applications, and AI-informed
+            user experiences. Skilled at translating ideas into clear roadmaps, coordinating
+            cross-functional teams, and shipping products that real people use.
+            Through platforms such as <strong>Kivu Ride</strong>, <strong>Dajah Tunes</strong>,
+            <strong>EmodoCar</strong>, and <strong>Hire Me Africa</strong>, I have developed a
+            strong blend of strategic product thinking, structured delivery, and user-centric
+            design—especially in the context of African markets and emerging technologies.
+          </p>
+        </section>
+
+        <!-- Work Experience -->
+        <section class="main-section">
+          <h2 class="main-section-title">Work Experience</h2>
+          <div class="main-section-underline"></div>
+
+          <!-- Kivu Ride -->
+          <div class="exp-block">
+            <div class="exp-role-title">Project Manager – Kivu Ride (AI-Enabled Ride-Hailing Platform)</div>
+            <div class="exp-dates">Most recent project</div>
+            <p class="exp-summary">
+              Led the design and coordination of a modern mobility platform concept combining ride-hailing
+              with an AI-assisted interface for riders and drivers.
+            </p>
+            <ul class="exp-bullets">
+              <li>Defined the product vision and requirements for a dual-app system serving riders and drivers.</li>
+              <li>Designed the concept for an AI microphone/agent button to let users speak destinations and receive intelligent suggestions.</li>
+              <li>Mapped ride-matching flows, basic pricing logic, and trip lifecycle states to guide technical architecture.</li>
+              <li>Collaborated with designers to create a clean, future-oriented interface aligned with AI-first experiences.</li>
+            </ul>
+          </div>
+
+          <!-- Dajah Tunes -->
+          <div class="exp-block">
+            <div class="exp-role-title">Project Manager – Dajah Tunes (Music Distribution & Rights Management Platform)</div>
+            <div class="exp-dates">Product development & operations coordination</div>
+            <p class="exp-summary">
+              Led the design and coordination of a creator-focused platform enabling artists and labels to publish,
+              distribute, and manage music releases through structured submissions, metadata control, and admin review workflows.
+            </p>
+            <ul class="exp-bullets">
+              <li>Defined product requirements and end-to-end workflows for artist onboarding, release creation, and submission review.</li>
+              <li>Designed structured metadata flows (tracks, contributors, roles, rights, artwork, scheduling) to ensure consistent release quality.</li>
+              <li>Coordinated design and development of artist dashboards and an admin portal for validation, approvals, and operational oversight.</li>
+              <li>Mapped release lifecycle states and quality checks to support scalable distribution operations and accurate reporting.</li>
+            </ul>
+          </div>
+
+          <!-- EmodoCar -->
+          <div class="exp-block">
+            <div class="exp-role-title">Project Manager & Co-Founder – EmodoCar (Smart Car Rental Platform)</div>
+            <div class="exp-dates">From concept to Play Store launch</div>
+            <p class="exp-summary">
+              Marketplace platform enabling rental companies to list vehicles and customers to search,
+              book, and review cars via a modern mobile app.
+            </p>
+            <ul class="exp-bullets">
+              <li>Owned end-to-end delivery: concept, UX supervision, development coordination, testing, and mobile deployment.</li>
+              <li>Designed booking flows, partner dashboards, vehicle management, and review mechanisms focused on trust and clarity.</li>
+              <li>Worked closely with engineers to integrate availability, pricing, and notifications into a coherent experience.</li>
+              <li>Set up QA routines and feedback loops to refine stability and user satisfaction after launch.</li>
+            </ul>
+          </div>
+
+          <!-- Hire Me Africa -->
+          <div class="exp-block">
+            <div class="exp-role-title">Project Manager – Hire Me Africa (Talent Discovery Platform)</div>
+            <div class="exp-dates">Foundational project</div>
+            <p class="exp-summary">
+              Digital platform connecting vetted African professionals with employers through structured
+              profiles, smart filters, and ranked candidate lists.
+            </p>
+            <ul class="exp-bullets">
+              <li>Led the project lifecycle from requirements discovery and scoping to launch and ongoing iteration.</li>
+              <li>Coordinated designers and developers to build onboarding flows, talent profiles, and employer dashboards.</li>
+              <li>Defined user journeys for talent search, filtering, and ranking to keep the platform intuitive and efficient.</li>
+              <li>Introduced Agile planning with clear sprints and backlog prioritization to keep delivery organized.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- References -->
+        <section class="main-section">
+          <h2 class="main-section-title">References</h2>
+          <div class="main-section-underline"></div>
+          <div class="refs-grid">
+            <div class="ref-card">
+              <div class="ref-name">Mugisha Rodrigue</div>
+              <div class="ref-role">CEO – Kivu Ride</div>
+              <div class="ref-phone-label">Phone</div>
+              <div class="ref-phone-value">+250 789 195 753</div>
+            </div>
+            <div class="ref-card">
+              <div class="ref-name">Jean Luc Habimana</div>
+              <div class="ref-role">CEO – Dajah Tunes</div>
+              <div class="ref-phone-label">Phone</div>
+              <div class="ref-phone-value">+250 780 255 600</div>
+            </div>
+            <div class="ref-card">
+              <div class="ref-name">Paul Olivier Rey</div>
+              <div class="ref-role">CEO – EmodoCar</div>
+              <div class="ref-phone-label">Phone</div>
+              <div class="ref-phone-value">+33 7 81 72 90 70</div>
+            </div>
+            <div class="ref-card">
+              <div class="ref-name">Terhas Legesse</div>
+              <div class="ref-role">CEO – Hire Me Africa</div>
+              <div class="ref-phone-label">Phone</div>
+              <div class="ref-phone-value">+250 789 944 201</div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
